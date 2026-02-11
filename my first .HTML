@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat With Friends — Make International Friends</title>
+
+  <!-- ===== CSS ===== -->
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial;}
+
+    body {background:#f4f7fb;color:#111;display:flex;flex-direction:column;min-height:100vh;}
+
+    /* Header */
+    header {
+      background:linear-gradient(135deg,#00c6ff,#0072ff);
+      color:white;padding:18px;text-align:center;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Navbar */
+    nav {background:#0f172a;padding:12px;text-align:center;}
+    nav a {color:white;margin:0 14px;text-decoration:none;font-weight:bold;}
+    nav a:hover {color:#0d6efd;}
+
+    /* Layout */
+    .app {display:grid;grid-template-columns:260px 1fr 260px;flex:1;height:calc(100vh - 140px);} 
+
+    /* Friends */
+    .friends {background:white;border-right:1px solid #ddd;overflow:auto;}
+    .friends h2 {background:#0072ff;color:white;padding:12px;font-size:18px;}
+    .friend {padding:12px;border-bottom:1px solid #eee;cursor:pointer;}
+    .friend:hover {background:#f1f5f9;}
+
+    /* Chat */
+    .chat {display:flex;flex-direction:column;background:#eef7ff;}
+    .chat-header {background:white;padding:14px;border-bottom:1px solid #ddd;font-weight:bold;}
+    .messages {flex:1;padding:18px;overflow:auto;}
+
+    .msg {margin-bottom:12px;padding:10px 14px;border-radius:10px;max-width:65%;font-size:14px;}
+    .sent {background:#0072ff;color:white;margin-left:auto;}
+    .received {background:white;}
+
+    .chat-input {display:flex;padding:12px;background:white;border-top:1px solid #ddd;}
+    .chat-input input {flex:1;padding:10px;border:1px solid #ccc;border-radius:6px;}
+    .chat-input button {margin-left:10px;padding:10px 18px;border:none;background:#0072ff;color:white;border-radius:6px;cursor:pointer;}
+
+    /* Right Panel (Monetization) */
+    .panel {background:white;border-left:1px solid #ddd;padding:15px;overflow:auto;}
+
+    .card {background:#f8fafc;padding:14px;border-radius:10px;margin-bottom:15px;box-shadow:0 2px 6px rgba(0,0,0,0.1);} 
+
+    .premium {background:linear-gradient(135deg,#ffc107,#ff9800);color:#111;text-align:center;padding:16px;border-radius:12px;font-weight:bold;}
+
+    .btn {display:block;text-align:center;margin-top:10px;padding:10px;background:#0f172a;color:white;text-decoration:none;border-radius:6px;}
+
+    /* Footer */
+    footer {background:#0f172a;color:white;text-align:center;padding:12px;font-size:14px;}
+
+    /* Responsive */
+    @media(max-width:1000px){
+      .app{grid-template-columns:1fr;}
+      .friends,.panel{display:none;}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌍 Chat With Friends</h1>
+  <p>Connect • Chat • Earn • Grow International Network</p>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Friends</a>
+  <a href="#">Messages</a>
+  <a href="#">Premium</a>
+  <a href="#">Login</a>
+</nav>
+
+<div class="app">
+
+  <!-- Friends List -->
+  <div class="friends">
+    <h2>Online Friends</h2>
+    <div class="friend">🇺🇸 Alex</div>
+    <div class="friend">🇬🇧 Emma</div>
+    <div class="friend">🇯🇵 Kenji</div>
+    <div class="friend">🇫🇷 Sophie</div>
+    <div class="friend">🇧🇷 Lucas</div>
+  </div>
+
+  <!-- Chat -->
+  <div class="chat">
+
+    <div class="chat-header">Chatting with Alex 🇺🇸</div>
+
+    <div class="messages" id="messages">
+      <div class="msg received">Hello 👋 Welcome to Chat With Friends</div>
+      <div class="msg sent">Hi! Nice to meet you 🌍</div>
+    </div>
+
+    <div class="chat-input">
+      <input id="msgInput" placeholder="Type message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+
+  </div>
+
+  <!-- Monetization Panel -->
+  <div class="panel">
+
+    <div class="premium">
+      ⭐ Go Premium
+      <p>Unlock unlimited chats & video calls</p>
+      <a class="btn" href="#">Upgrade $5/mo</a>
+    </div>
+
+    <div class="card">
+      <h3>💰 Earn Rewards</h3>
+      <p>Invite friends & earn coins.</p>
+      <a class="btn" href="#">Invite Now</a>
+    </div>
+
+    <div class="card">
+      <h3>📢 Ads Space</h3>
+      <p>Your Google AdSense ads will show here.</p>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Chat With Friends — Monetized International Chat Platform
+</footer>
+
+<script>
+
+function sendMessage(){
+  const input=document.getElementById("msgInput");
+  const box=document.getElementById("messages");
+  if(input.value.trim()==="")return;
+
+  const msg=document.createElement("div");
+  msg.className="msg sent";
+  msg.textContent=input.value;
+  box.appendChild(msg);
+  input.value="";
+  box.scrollTop=box.scrollHeight;
+}
+
+</script>
+
+</body>
+</html>
